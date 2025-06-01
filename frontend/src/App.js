@@ -458,9 +458,24 @@ function App() {
 
             {/* Add Goal Modal */}
             {showAddGoal && (
-              <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-                <div className="bg-white p-6 rounded-lg w-full max-w-md">
-                  <h3 className="text-lg font-medium text-gray-900 mb-4">Add New Savings Goal</h3>
+              <div 
+                className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+                onClick={(e) => {
+                  if (e.target === e.currentTarget) {
+                    setShowAddGoal(false);
+                  }
+                }}
+              >
+                <div className="bg-white p-6 rounded-lg w-full max-w-md" onClick={(e) => e.stopPropagation()}>
+                  <div className="flex justify-between items-center mb-4">
+                    <h3 className="text-lg font-medium text-gray-900">Add New Savings Goal</h3>
+                    <button
+                      onClick={() => setShowAddGoal(false)}
+                      className="text-gray-400 hover:text-gray-600"
+                    >
+                      ✕
+                    </button>
+                  </div>
                   <div className="space-y-4">
                     <input
                       type="text"
